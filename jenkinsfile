@@ -9,20 +9,18 @@ pipeline {
             }
         }
 
-        stage('Deploy to Apache') {
+        stage('Deploy index.html to Apache') {
             steps {
                 sh '''
-                rm -rf /var/www/html/*
-                cp -r * /var/www/html/
+                cp index.html /var/www/html/
                 '''
             }
         }
-
     }
 
     post {
         success {
-            echo "✅ Deployment completed successfully!"
+            echo "✅ index.html deployed successfully!"
         }
         failure {
             echo "❌ Deployment failed!"
